@@ -1,3 +1,22 @@
+<?php 
+    if(isset($_POST['submit'])){
+
+        include_once('config.php');
+
+        $nome = $_POST['name'];
+        $email = $_POST['email'];
+        $telefone = $_POST['telefone'];
+        $sexo = $_POST['gender'];
+        $data_nasc = $_POST['birthday'];
+        $cidade = $_POST['cidade'];
+        $estado = $_POST['estado'];
+        $endereco = $_POST['endereco'];
+
+        $result = mysqli_query($conexao, "INSERT INTO formulario(nome, email, telefone, sexo, data_nasc, cidade, estado, endereco)
+        VALUES ('$nome', '$email', '$telefone', '$sexo', '$data_nasc', '$cidade', '$estado', '$endereco')");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +28,7 @@
 </head>
 <body>
     <div class="container">
-        <form>
+        <form action="form-page.php" method="POST">
             <fieldset>
                     <legend>Formulário de Clientes</legend>
                     <br>
@@ -60,7 +79,7 @@
                         <label for="endereco" class="label-inputs">Endereço</label>
                     </div>
                     <br>
-                    <button class="form-btn" id="form-btn">Enviar</button>
+                    <input class="form-btn" id="form-btn" name="submit" type="submit"></input>
             </fieldset>
         </form>
     </div>
