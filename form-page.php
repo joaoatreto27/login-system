@@ -4,6 +4,7 @@
         include_once('config.php');
 
         $nome = $_POST['name'];
+        $senha = $_POST['password'];
         $email = $_POST['email'];
         $telefone = $_POST['telefone'];
         $sexo = $_POST['gender'];
@@ -12,8 +13,8 @@
         $estado = $_POST['estado'];
         $endereco = $_POST['endereco'];
 
-        $result = mysqli_query($conexao, "INSERT INTO formulario(nome, email, telefone, sexo, data_nasc, cidade, estado, endereco)
-        VALUES ('$nome', '$email', '$telefone', '$sexo', '$data_nasc', '$cidade', '$estado', '$endereco')");
+        $result = mysqli_query($conexao, "INSERT INTO formulario(nome, senha, email, telefone, sexo, data_nasc, cidade, estado, endereco)
+        VALUES ('$nome', '$senha', '$email', '$telefone', '$sexo', '$data_nasc', '$cidade', '$estado', '$endereco')");
     }
 ?>
 
@@ -35,6 +36,11 @@
                     <div class="input-box">
                         <input type="text" class="inputs" name="name" id="name" required>
                         <label for="name" class="label-inputs">Nome Completo</label>
+                    </div>
+                    <br>
+                    <div class="input-box">
+                        <input type="password" class="inputs" name="password" id="pasword" required>
+                        <label for="password" class="label-inputs">Senha</label>
                     </div>
                     <br>
                     <div class="input-box">
