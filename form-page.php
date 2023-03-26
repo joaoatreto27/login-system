@@ -13,8 +13,10 @@
         $estado = $_POST['estado'];
         $endereco = $_POST['endereco'];
 
-        $result = mysqli_query($conexao, "INSERT INTO formulario_1(nome, senha, email, telefone, sexo, data_nasc, cidade, estado, endereco)
+        $result = mysqli_query($conexao, "INSERT INTO formulario(nome, senha, email, telefone, sexo, data_nasc, cidade, estado, endereco)
         VALUES ('$nome', '$senha', '$email', '$telefone', '$sexo', '$data_nasc', '$cidade', '$estado', '$endereco')");
+
+        header('Location: login.php');
     }
 ?>
 
