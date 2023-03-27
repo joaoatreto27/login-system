@@ -9,7 +9,16 @@
     }
     $logado = $_SESSION['email'];
 
-    $sql = "SELECT * FROM formulario ORDER BY id DESC";
+    if(!empty($_GET['search'])){
+
+        $data = $_GET['search'];
+        $sql = "SELECT * FROM formulario WHERE id LIKE '%$data%' or nome LIKE '%$data%' or email LIKE '%$data%' ORDER BY id DESC";
+
+    }else{
+        
+        $sql = "SELECT * FROM formulario ORDER BY id DESC";
+    
+    }
 
     $result = $conexao->query($sql);
 ?>
@@ -41,7 +50,7 @@
         justify-content: end;
     }
 
-    button{
+    .btn-sair{
         background: #ff0000;
         width: 60px;
         height: 40px;
@@ -56,6 +65,21 @@
         color: #fff;
     }
 
+    .box-search{
+        display: flex;
+        gap: 1%;
+        margin-top: 20px;
+    }
+
+    .box-search input{
+        height: 40px;
+        width: 400px;
+    }
+
+    .box-search svg{
+        background-color: transparent;
+    }
+
     .table-bg{
         background: rgba(0, 0, 0, 0.3);
         border-radius: 15px 15px 0 0;
@@ -65,13 +89,21 @@
 
 <body>
     <div class="header">
-        <button href>
+        <button class="btn-sair">
             <a href="./sair.php">Sair</a>
         </button>
     </div>
     
     <div>
         <?php echo"<h1>Bem vindo $logado<h1>" ?>
+    </div>
+    <div class="box-search">
+        <input type="search" class="form-control" placeholder="Pesquisar" id="pesquisar">
+        <button onclick="searchData()" class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+        </button>
     </div>
     <div class="m-5">
         <table class="table text-white table-bg">
@@ -123,5 +155,19 @@
         </table>
     </div>
 </body>
+<script>
+    var search = document.getElementById('pesquisar');
+    
+    search.addEventListener("keydown", function(event){
+        if(event.key === "Enter"){
+            searchData();
+        }
+    });
 
+    function searchData() {
+
+        window.location = 'sistema.php?search='+search.value;
+    }
+
+</script>
 </html>
