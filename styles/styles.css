@@ -11,13 +11,13 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to right, cyan, yellow);
+    background: linear-gradient(to right, rgb(20, 147, 220), rgb(17, 54, 71));
 }
 
 .container{
     width: 300px;
     height: 350px;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.6);
     border-radius: 10px;
     padding: 50px;
 }
@@ -40,7 +40,7 @@ form input{
     margin: 10px 0;
 }
 
-button{
+.submit-btn{
     background-color: dodgerblue;
     color: #fff;
     height: 45px;
@@ -53,6 +53,6 @@ button{
     font-size: 15px;
 }
 
-button:hover{
+.submit-btn:hover{
     background: deepskyblue;
 }

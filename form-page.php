@@ -1,3 +1,25 @@
+<?php 
+    if(isset($_POST['submit'])){
+
+        include_once('config.php');
+
+        $nome = $_POST['name'];
+        $senha = $_POST['senha'];
+        $email = $_POST['email'];
+        $telefone = $_POST['telefone'];
+        $sexo = $_POST['gender'];
+        $data_nasc = $_POST['birthday'];
+        $cidade = $_POST['cidade'];
+        $estado = $_POST['estado'];
+        $endereco = $_POST['endereco'];
+
+        $result = mysqli_query($conexao, "INSERT INTO formulario(nome, senha, email, telefone, sexo, data_nasc, cidade, estado, endereco)
+        VALUES ('$nome', '$senha', '$email', '$telefone', '$sexo', '$data_nasc', '$cidade', '$estado', '$endereco')");
+
+        header('Location: login.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,13 +31,18 @@
 </head>
 <body>
     <div class="container">
-        <form>
+        <form action="form-page.php" method="POST">
             <fieldset>
                     <legend>Formulário de Clientes</legend>
                     <br>
                     <div class="input-box">
                         <input type="text" class="inputs" name="name" id="name" required>
                         <label for="name" class="label-inputs">Nome Completo</label>
+                    </div>
+                    <br>
+                    <div class="input-box">
+                        <input type="password" class="inputs" name="senha" id="pasword" required>
+                        <label for="senha" class="label-inputs">Senha</label>
                     </div>
                     <br>
                     <div class="input-box">
@@ -60,7 +87,7 @@
                         <label for="endereco" class="label-inputs">Endereço</label>
                     </div>
                     <br>
-                    <button class="form-btn" id="form-btn">Enviar</button>
+                    <input class="form-btn" id="form-btn" name="submit" type="submit"></input>
             </fieldset>
         </form>
     </div>

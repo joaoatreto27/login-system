@@ -9,11 +9,11 @@
 </head>
 <body>
     <div class="container">
-        <form>
+        <form action="test-login.php" method="POST">
             <h1>Login</h1>
-            <input type="text" id="name" class="input-name" placeholder="Nome">
-            <input type="password" id="password" class="input-password" placeholder="Senha">
-            <button class="send-btn" id="send-btn">Enviar</button>
+            <input type="text" name="email" placeholder="Email">
+            <input type="password" name="senha" placeholder="Senha">
+            <input type="submit" class="submit-btn" name="submit" value="Enviar">
         </form>
     </div>
 </body>
